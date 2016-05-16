@@ -33,6 +33,8 @@ echo "bind 0.0.0.0" > $REDIS_CONFIGURATION_FILE
 #fi
 echo "dir ." >> $REDIS_CONFIGURATION_FILE
 
+echo "slave-read-only no" >> $REDIS_CONFIGURATION_FILE
+
 if [ -n "${MASTER_IP}" ] && [ -n "${MASTER_PORT}" ]; then
   echo "Redis running as a slave"
   echo "slaveof ${MASTER_IP} ${MASTER_PORT}" >> $REDIS_CONFIGURATION_FILE
